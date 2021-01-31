@@ -35,9 +35,15 @@ var main = async () => {
             .then(response => {
                 console.log("response")
                 console.log(response.data[0].price);
+<<<<<<< HEAD
                 if (parseFloat(response.data[0].price) > price) {
                     device.powerOn();
                 } else if (parseFloat(response.data[0].price) < price){
+=======
+                if (parseFloat(response.data[0].price) >= price) {
+                    device.powerOn();
+                } else {
+>>>>>>> 2b5fc5d6bc3ac9ab62245945058d03ef913ae30e
                     device.powerOff();
                 }
                 price = response.data[0].price;
