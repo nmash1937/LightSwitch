@@ -1,4 +1,4 @@
-import {  LightSwitch, Properties} from "./interfaces/Interfaces";
+import {  LightSwitch } from "./interfaces/Interfaces";
 const { login } = require("tplink-cloud-api");
 const axios = require('axios');
 
@@ -22,17 +22,18 @@ var main = async () => {
 
     while (true) {
         axios.get(baseUrl)
-            .then(response => {
+            .then(response=> {
+                const stockPrice: number = parseFloat(response.data[0].price);
                 console.log("Dogecoin Price:")
-                console.log(response.data[0].price);
-                if (parseFloat(response.data[0].price) > price) {
+                console.log(stockPrice);
+                if (stockPrice > price) {
                     console.log("turning on")
                     device.powerOn();
-                } else if (parseFloat(response.data[0].price) < price) {
+                } else if (stockPrice < price) {
                     console.log("turning off")
                     device.powerOff();
                 }
-                price = response.data[0].price;
+                price = stockPrice;
             })
             .catch(error => {
                 console.log(error);
