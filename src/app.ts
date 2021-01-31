@@ -4,15 +4,9 @@ const axios = require('axios');
 const baseUrl = "https://api.nomics.com/v1/currencies/ticker?key=5a0965044993533a92ccbddb14d9a94f&ids=DOGE&interval=1d,30d&convert=EUR&per-page=100&page=1"
 
 interface LightSwitch {
-    deviceType: string,
-    deviceId: string,
-    [propName: string]: any;
-}
-
-interface ResponseObject {
-    Ticker:  {
-
-    },
+    powerOn : () =>{},
+    powerOff: () => {},
+    toggle: () => {}
     [propName: string]: any;
 }
 
@@ -22,9 +16,9 @@ function delay(ms: number) {
 
 var main = async () => {
     const tplink = await login("nmash1937@me.com", "nesnYv-7vapco-zywkej");
-    let deviceList: LightSwitch[] = await tplink.getDeviceList();
+    let deviceList = await tplink.getDeviceList();
 
-    let device;
+    let device: LightSwitch;
     device = await tplink.getHS100(deviceList[0].deviceId)
 
     var price = 0;
