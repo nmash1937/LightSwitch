@@ -5,7 +5,7 @@ import axios from 'axios';
 var propertiesReader = require('properties-reader');
 var properties = propertiesReader('application.properties');
 
-const baseUrl = "https://api.nomics.com/v1/currencies/ticker?key=5a0965044993533a92ccbddb14d9a94f&ids=DOGE&interval=1d,30d&convert=EUR&per-page=100&page=1"
+const baseUrl = "https://api.nomics.com/v1/currencies/ticker?key=5a0965044993533a92ccbddb14d9a94f&ids=DOGE&interval=1h,30d&per-page=100&page=1"
 
 function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
