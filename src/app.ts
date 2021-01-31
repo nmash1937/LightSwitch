@@ -1,6 +1,6 @@
 import {  LightSwitch } from "./interfaces/Interfaces";
-const { login } = require("tplink-cloud-api");
-const axios = require('axios');
+import { login } from "tplink-cloud-api";
+import axios from 'axios';
 
 var propertiesReader = require('properties-reader');
 var properties = propertiesReader('application.properties');
@@ -11,7 +11,7 @@ function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-var main = async () => {
+const main = async () => {
     const tplink = await login(properties._properties.username, properties._properties.password);
     let deviceList = await tplink.getDeviceList();
 
